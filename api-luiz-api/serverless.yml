@@ -1,0 +1,35 @@
+service: api-serverless
+provider:
+    name: aws
+    runtime: nodejs8.10
+    memorySize: 128
+    timeout: 30
+    stage: pro
+    region: us-east-1
+functions:
+    anotations:
+        handler: handler.anotations
+        events:
+            - http:
+                path: anotations
+                method: get
+                cors: true
+            - http:
+                path: anotations/{id}
+                method: get
+                cors: true
+            - http:
+                path: anotations
+                method: post
+                cors: true
+            - http:
+                path: anotations
+                method: put
+                cors: true
+            - http:
+                path: anotations
+                method: delete
+                cors: true
+  
+plugins:
+    - serverless-offline
